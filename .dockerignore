@@ -1,0 +1,7 @@
+venv/
+.git/
+__pycache__/
+*.pyc
+results.sarif
+sbom.json
+supply_chain_audit.json
