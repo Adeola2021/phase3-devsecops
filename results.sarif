@@ -16,15 +16,15 @@
                 "text": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]"
               },
               "fullDescription": {
-                "text": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n"
+                "text": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n"
               },
               "defaultConfiguration": {
                 "level": "error"
               },
               "helpUri": "https://avd.aquasec.com/nvd/cve-2026-53615",
               "help": {
-                "text": "Vulnerability CVE-2026-53615\nSeverity: HIGH\nPackage: util-linux\nFixed Version: \nLink: [CVE-2026-53615](https://avd.aquasec.com/nvd/cve-2026-53615)\nPackage updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
-                "markdown": "**Vulnerability CVE-2026-53615**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|util-linux||[CVE-2026-53615](https://avd.aquasec.com/nvd/cve-2026-53615)|\n\nPackage updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n"
+                "text": "Vulnerability CVE-2026-53615\nSeverity: HIGH\nPackage: util-linux\nFixed Version: \nLink: [CVE-2026-53615](https://avd.aquasec.com/nvd/cve-2026-53615)\nPackage updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+                "markdown": "**Vulnerability CVE-2026-53615**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|util-linux||[CVE-2026-53615](https://avd.aquasec.com/nvd/cve-2026-53615)|\n\nPackage updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n"
               },
               "properties": {
                 "precision": "very-high",
