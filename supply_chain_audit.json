@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.71.2"
   },
-  "ReportID": "019f8f0e-088d-7142-8790-af7f6cbcbaf3",
-  "CreatedAt": "2026-07-23T13:58:09.421085674+01:00",
+  "ReportID": "019fa328-3ac2-7703-a2d4-081ffd843293",
+  "CreatedAt": "2026-07-27T11:39:10.530461015+01:00",
   "ArtifactID": "sha256:ccb74a98f1b25d594913c52f4801619f5483515e2c46e9966e1ac36d83649dc1",
   "ArtifactName": "supply-chain-demo",
   "ArtifactType": "container_image",
@@ -7727,7 +7727,7 @@
           },
           "Fingerprint": "sha256:a95a3d49f50b08b422ffdfd88743be202b6d1212737360a7d4cd75023045a06b",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -7826,6 +7826,7 @@
             "https://access.redhat.com/errata/RHSA-2026:42736",
             "https://access.redhat.com/errata/RHSA-2026:42739",
             "https://access.redhat.com/errata/RHSA-2026:43420",
+            "https://access.redhat.com/errata/RHSA-2026:44481",
             "https://access.redhat.com/security/cve/CVE-2026-54369",
             "https://bugzilla.redhat.com/2490277",
             "https://bugzilla.redhat.com/2490279",
@@ -7835,17 +7836,17 @@
             "https://cgit.git.savannah.nongnu.org/cgit/acl.git/commit/?id=3589787cd589b34bdd9265936e17190b6d3f17d1",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-54369",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-54370",
-            "https://errata.almalinux.org/8/ALSA-2026-43420.html",
+            "https://errata.almalinux.org/9/ALSA-2026-42736.html",
             "https://errata.rockylinux.org/RLSA-2026:42736",
             "https://linux.oracle.com/cve/CVE-2026-54369.html",
-            "https://linux.oracle.com/errata/ELSA-2026-42739.html",
+            "https://linux.oracle.com/errata/ELSA-2026-43420.html",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-54369",
             "https://security.access.redhat.com/data/csaf/v2/vex/2026/cve-2026-54369.json",
             "https://www.cve.org/CVERecord?id=CVE-2026-54369",
             "https://www.vulncheck.com/advisories/acl-symlink-traversal-privilege-escalation-via-libacl-functions"
           ],
           "PublishedDate": "2026-06-29T14:16:57.487Z",
-          "LastModifiedDate": "2026-07-22T12:18:13.81Z"
+          "LastModifiedDate": "2026-07-24T13:18:27.353Z"
         },
         {
           "VulnerabilityID": "CVE-2026-53615",
@@ -7868,7 +7869,7 @@
           },
           "Fingerprint": "sha256:c92f733f40de48121f31a81d55827315c105a33fcc9d263ee5911df045c1d1e4",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -7895,7 +7896,7 @@
           },
           "Fingerprint": "sha256:a057150a7e3c3d6c698a01f69f7a18a5a6f037b58c94ce16495e11b6fe822c87",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -7922,7 +7923,7 @@
           },
           "Fingerprint": "sha256:d525a31fc3d85be04acf5ed5b25a5db829f5e649ce30f80e689ada2640d72383",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -8022,7 +8023,7 @@
           },
           "Fingerprint": "sha256:e7a8d9c4203bbf211a9c1cdd4da0070a7d8560f73515fe704a85214de16263cc",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -8122,7 +8123,7 @@
           },
           "Fingerprint": "sha256:4ab648ca43fbef4851687aa401f9ab71362b7a51bb111b05969628cf96043455",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -8149,7 +8150,7 @@
           },
           "Fingerprint": "sha256:acc2b7e3fa3cf3b8c63113b56830d8d0e066f2157c0e656c922960132446e71f",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -8176,7 +8177,7 @@
           },
           "Fingerprint": "sha256:e4bf18a08b80dfc8f021b8285123b118e9cd319bfc1b3c05647b8814db7188a8",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -8431,7 +8432,7 @@
             "https://bugzilla.redhat.com/2481314",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2481314",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-42496",
-            "https://errata.almalinux.org/8/ALSA-2026-30852.html",
+            "https://errata.almalinux.org/9/ALSA-2026-30856.html",
             "https://errata.rockylinux.org/RLSA-2026:30856",
             "https://github.com/jib/archive-tar-new/commit/17c873492a05eddc0de18c1485e0b2cccd5a9158.patch",
             "https://linux.oracle.com/cve/CVE-2026-42496.html",
@@ -8445,7 +8446,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-42497"
           ],
           "PublishedDate": "2026-05-26T02:16:40.13Z",
-          "LastModifiedDate": "2026-07-15T02:21:32.24Z"
+          "LastModifiedDate": "2026-07-24T10:10:00.197Z"
         },
         {
           "VulnerabilityID": "CVE-2026-57433",
@@ -8539,7 +8540,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-8376"
           ],
           "PublishedDate": "2026-05-26T00:16:57.15Z",
-          "LastModifiedDate": "2026-06-17T11:03:51.843Z"
+          "LastModifiedDate": "2026-07-23T11:10:00.12Z"
         },
         {
           "VulnerabilityID": "CVE-2026-42497",
@@ -8594,7 +8595,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-42497"
           ],
           "PublishedDate": "2026-05-26T02:16:40.25Z",
-          "LastModifiedDate": "2026-06-17T10:47:55.893Z"
+          "LastModifiedDate": "2026-07-24T11:10:00.17Z"
         },
         {
           "VulnerabilityID": "CVE-2026-48962",
@@ -8655,7 +8656,7 @@
             "https://bugzilla.redhat.com/2481767",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2481767",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-48962",
-            "https://errata.almalinux.org/8/ALSA-2026-30858.html",
+            "https://errata.almalinux.org/9/ALSA-2026-30859.html",
             "https://errata.rockylinux.org/RLSA-2026:30859",
             "https://github.com/pmqs/IO-Compress/commit/f2db247bf90d4cc7ee2710be384946081f3b4610.patch",
             "https://linux.oracle.com/cve/CVE-2026-48962.html",
@@ -8666,7 +8667,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-48962"
           ],
           "PublishedDate": "2026-05-27T04:16:31.333Z",
-          "LastModifiedDate": "2026-07-15T02:22:34.83Z"
+          "LastModifiedDate": "2026-07-24T12:10:00.21Z"
         },
         {
           "VulnerabilityID": "CVE-2026-57432",
@@ -8766,7 +8767,7 @@
             "https://www.cve.org/CVERecord?id=CVE-2026-9538"
           ],
           "PublishedDate": "2026-05-26T02:16:41.15Z",
-          "LastModifiedDate": "2026-06-17T11:05:27.577Z"
+          "LastModifiedDate": "2026-07-23T11:10:00.12Z"
         },
         {
           "VulnerabilityID": "CVE-2026-53615",
@@ -8789,7 +8790,7 @@
           },
           "Fingerprint": "sha256:e2e668460e7b9a251153df07073ae786258c3cacf2e7e36e0b3900106b76d4c9",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
-          "Description": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
+          "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
           "VendorSeverity": {
             "amazon": 3
@@ -9479,7 +9480,7 @@
             "https://bugzilla.redhat.com/2431959",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2431959",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24049",
-            "https://errata.almalinux.org/8/ALSA-2026-2090.html",
+            "https://errata.almalinux.org/9/ALSA-2026-1939.html",
             "https://errata.rockylinux.org/RLSA-2026:1939",
             "https://github.com/pypa/wheel",
             "https://github.com/pypa/wheel/commit/7a7d2de96b22a9adf9208afcc9547e1001569fef",
@@ -13497,14 +13498,13 @@
             "https://access.redhat.com/errata/RHSA-2026:42644",
             "https://access.redhat.com/errata/RHSA-2026:42946",
             "https://access.redhat.com/security/cve/CVE-2026-27145",
-            "https://bugzilla.redhat.com/2480756",
+            "https://bugzilla.redhat.com/2445356",
             "https://bugzilla.redhat.com/2484207",
-            "https://bugzilla.redhat.com/2498152",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2445356",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2484207",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-25679",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-27145",
-            "https://errata.almalinux.org/8/ALSA-2026-38995.html",
+            "https://errata.almalinux.org/9/ALSA-2026-36317.html",
             "https://errata.rockylinux.org/RLSA-2026:36317",
             "https://go.dev/cl/783621",
             "https://go.dev/issue/79694",
@@ -13568,14 +13568,12 @@
             }
           },
           "References": [
-            "https://access.redhat.com/errata/RHSA-2026:38995",
+            "https://access.redhat.com/errata/RHSA-2026:38878",
             "https://access.redhat.com/security/cve/CVE-2026-39822",
-            "https://bugzilla.redhat.com/2480756",
-            "https://bugzilla.redhat.com/2484207",
             "https://bugzilla.redhat.com/2498152",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2498152",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-39822",
-            "https://errata.almalinux.org/8/ALSA-2026-38995.html",
+            "https://errata.almalinux.org/9/ALSA-2026-38878.html",
             "https://errata.rockylinux.org/RLSA-2026:38878",
             "https://go.dev/cl/797880",
             "https://go.dev/issue/79005",
