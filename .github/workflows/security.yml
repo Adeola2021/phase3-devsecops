@@ -1,49 +1,53 @@
-name: Supply Chain Security Pipeline
+name: DevSecOps Security Pipeline
 
 on:
   push:
     branches:
       - main
 
-  pull_request:
-    branches:
-      - main
-
 jobs:
+
   security:
+
     runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      contents: read
 
     steps:
 
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
 
-      - name: Install Python dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pip-audit
+    - name: Install Python Dependencies
+      run: |
+        pip install pip-audit cyclonedx-bom
 
-      - name: Run pip-audit
-        run: |
-          pip-audit -r requirements.txt
+    - name: Install Syft
+      run: |
+        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
 
-      - name: Build Docker Image
-        run: |
-          docker build -t supply-chain-demo .
+    - name: Install Trivy
+      uses: aquasecurity/trivy-action@master
 
-      - name: Run Trivy Scan
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: supply-chain-demo
-          format: sarif
-          output: results.sarif
+    - name: Run Security Gate
+      run: |
+        chmod +x security_gate.sh
+        ./security_gate.sh
 
-      - name: Upload SARIF
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: results.sarif
+    - name: Upload SARIF Report
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: results.sarif
+
+    - name: Upload SBOM
+      uses: actions/upload-artifact@v4
+      with:
+        name: CycloneDX-SBOM
+        path: sbom.json
