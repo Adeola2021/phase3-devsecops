@@ -516,6 +516,33 @@
                   "HIGH"
                 ]
               }
+            },
+            {
+              "id": "private-key",
+              "name": "Secret",
+              "shortDescription": {
+                "text": "Asymmetric Private Key"
+              },
+              "fullDescription": {
+                "text": "****************************************************************"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://github.com/aquasecurity/trivy/blob/main/pkg/fanal/secret/builtin-rules.go",
+              "help": {
+                "text": "Secret Asymmetric Private Key\nSeverity: HIGH\nMatch: ****************************************************************",
+                "markdown": "**Secret Asymmetric Private Key**\n| Severity | Match |\n| --- | --- |\n|HIGH|****************************************************************|"
+              },
+              "properties": {
+                "precision": "very-high",
+                "security-severity": "8.0",
+                "tags": [
+                  "secret",
+                  "security",
+                  "HIGH"
+                ]
+              }
             }
           ],
           "version": "0.71.2"
@@ -1304,11 +1331,38 @@
               }
             }
           ]
+        },
+        {
+          "ruleId": "private-key",
+          "ruleIndex": 18,
+          "level": "error",
+          "message": {
+            "text": "Artifact: /app/cosign.key\nType: \nSecret Asymmetric Private Key\nSeverity: HIGH\nMatch: ****************************************************************"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/cosign.key",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 1,
+                  "endLine": 10,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "/app/cosign.key"
+              }
+            }
+          ]
         }
       ],
       "columnKind": "utf16CodeUnits",
       "properties": {
-        "imageID": "sha256:e7d12d175fe205f4fa8c15e7cd50b63075001b408cfe2b546e716f914b09a950",
+        "imageID": "sha256:bb56385e849c7b53e2df8d99a53a6d8c7b8b33033ed4f70dd3c664fe4e400471",
         "imageName": "supply-chain-demo",
         "repoDigests": [],
         "repoTags": [
