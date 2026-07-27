@@ -6,14 +6,13 @@ on:
       - main
 
 jobs:
-
   security:
 
     runs-on: ubuntu-latest
 
     permissions:
-      security-events: write
       contents: read
+      security-events: write
 
     steps:
 
@@ -27,21 +26,27 @@ jobs:
 
     - name: Install Python Dependencies
       run: |
+        python -m pip install --upgrade pip
         pip install pip-audit cyclonedx-bom
+
+    - name: Install Docker
+      uses: docker/setup-buildx-action@v3
 
     - name: Install Syft
       run: |
-        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+        curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
-    - name: Install Trivy
-      uses: aquasecurity/trivy-action@master
-
-    - name: Run Security Gate
+    - name: Install Trivy CLI
       run: |
-        chmod +x security_gate.sh
-        ./security_gate.sh
+        wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
 
-    - name: Upload SARIF Report
+    - name: Make security gate executable
+      run: chmod +x security_gate.sh
+
+    - name: Execute Security Gate
+      run: ./security_gate.sh
+
+    - name: Upload SARIF to GitHub Code Scanning
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: results.sarif
