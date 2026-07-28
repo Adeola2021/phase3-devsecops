@@ -350,27 +350,58 @@
               }
             },
             {
-              "id": "CVE-2026-23949",
+              "id": "CVE-2024-6345",
               "name": "LanguageSpecificPackageVulnerability",
               "shortDescription": {
-                "text": "jaraco.context: jaraco.context: Path traversal via malicious tar archives"
+                "text": "pypa/setuptools: Remote code execution via download functions in the package_index module in pypa/setuptools"
               },
               "fullDescription": {
-                "text": "jaraco.context, an open-source software package that provides some useful decorators and context managers, has a Zip Slip path traversal vulnerability in the `jaraco.context.tarball()` function starting in version 5.2.0 and prior to version 6.1.0. The vulnerability may allow attackers to extract files outside the intended extraction directory when malicious tar archives are processed. The strip_first_component filter splits the path on the first `/` and extracts the second component, while allowing `../` sequences. Paths like `dummy_dir/../../etc/passwd` become `../../etc/passwd`. Note that this suffers from a nested tarball attack as well with multi-level tar files such as `dummy_dir/inner.tar.gz`, where the inner.tar.gz includes a traversal `dummy_dir/../../config/.env` that also gets translated to `../../config/.env`. Version 6.1.0 contains a patch for the issue."
+                "text": "A vulnerability in the package_index module of pypa/setuptools versions up to 69.1.1 allows for remote code execution via its download functions. These functions, which are used to download packages from URLs provided by users or retrieved from package index servers, are susceptible to code injection. If these functions are exposed to user-controlled inputs, such as package URLs, they can execute arbitrary commands on the system. The issue is fixed in version 70.0."
               },
               "defaultConfiguration": {
                 "level": "error"
               },
-              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-23949",
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2024-6345",
               "help": {
-                "text": "Vulnerability CVE-2026-23949\nSeverity: HIGH\nPackage: jaraco.context\nFixed Version: 6.1.0\nLink: [CVE-2026-23949](https://avd.aquasec.com/nvd/cve-2026-23949)\njaraco.context, an open-source software package that provides some useful decorators and context managers, has a Zip Slip path traversal vulnerability in the `jaraco.context.tarball()` function starting in version 5.2.0 and prior to version 6.1.0. The vulnerability may allow attackers to extract files outside the intended extraction directory when malicious tar archives are processed. The strip_first_component filter splits the path on the first `/` and extracts the second component, while allowing `../` sequences. Paths like `dummy_dir/../../etc/passwd` become `../../etc/passwd`. Note that this suffers from a nested tarball attack as well with multi-level tar files such as `dummy_dir/inner.tar.gz`, where the inner.tar.gz includes a traversal `dummy_dir/../../config/.env` that also gets translated to `../../config/.env`. Version 6.1.0 contains a patch for the issue.",
-                "markdown": "**Vulnerability CVE-2026-23949**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|jaraco.context|6.1.0|[CVE-2026-23949](https://avd.aquasec.com/nvd/cve-2026-23949)|\n\njaraco.context, an open-source software package that provides some useful decorators and context managers, has a Zip Slip path traversal vulnerability in the `jaraco.context.tarball()` function starting in version 5.2.0 and prior to version 6.1.0. The vulnerability may allow attackers to extract files outside the intended extraction directory when malicious tar archives are processed. The strip_first_component filter splits the path on the first `/` and extracts the second component, while allowing `../` sequences. Paths like `dummy_dir/../../etc/passwd` become `../../etc/passwd`. Note that this suffers from a nested tarball attack as well with multi-level tar files such as `dummy_dir/inner.tar.gz`, where the inner.tar.gz includes a traversal `dummy_dir/../../config/.env` that also gets translated to `../../config/.env`. Version 6.1.0 contains a patch for the issue."
+                "text": "Vulnerability CVE-2024-6345\nSeverity: HIGH\nPackage: setuptools\nFixed Version: 70.0.0\nLink: [CVE-2024-6345](https://avd.aquasec.com/nvd/cve-2024-6345)\nA vulnerability in the package_index module of pypa/setuptools versions up to 69.1.1 allows for remote code execution via its download functions. These functions, which are used to download packages from URLs provided by users or retrieved from package index servers, are susceptible to code injection. If these functions are exposed to user-controlled inputs, such as package URLs, they can execute arbitrary commands on the system. The issue is fixed in version 70.0.",
+                "markdown": "**Vulnerability CVE-2024-6345**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|setuptools|70.0.0|[CVE-2024-6345](https://avd.aquasec.com/nvd/cve-2024-6345)|\n\nA vulnerability in the package_index module of pypa/setuptools versions up to 69.1.1 allows for remote code execution via its download functions. These functions, which are used to download packages from URLs provided by users or retrieved from package index servers, are susceptible to code injection. If these functions are exposed to user-controlled inputs, such as package URLs, they can execute arbitrary commands on the system. The issue is fixed in version 70.0."
               },
               "properties": {
-                "cvssv3_baseScore": 8.6,
-                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N",
+                "cvssv3_baseScore": 8.8,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                "cvssv40_baseScore": 7.5,
+                "cvssv40_vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N",
                 "precision": "very-high",
-                "security-severity": "8.6",
+                "security-severity": "8.8",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-47273",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "setuptools: Path Traversal Vulnerability in setuptools PackageIndex"
+              },
+              "fullDescription": {
+                "text": "setuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2025-47273",
+              "help": {
+                "text": "Vulnerability CVE-2025-47273\nSeverity: HIGH\nPackage: setuptools\nFixed Version: 78.1.1\nLink: [CVE-2025-47273](https://avd.aquasec.com/nvd/cve-2025-47273)\nsetuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue.",
+                "markdown": "**Vulnerability CVE-2025-47273**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|setuptools|78.1.1|[CVE-2025-47273](https://avd.aquasec.com/nvd/cve-2025-47273)|\n\nsetuptools is a package that allows users to download, build, install, upgrade, and uninstall Python packages. A path traversal vulnerability in `PackageIndex` is present in setuptools prior to version 78.1.1. An attacker would be allowed to write files to arbitrary locations on the filesystem with the permissions of the process running the Python code, which could escalate to remote code execution depending on the context. Version 78.1.1 fixes the issue."
+              },
+              "properties": {
+                "cvssv40_baseScore": 7.7,
+                "cvssv40_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:N/SA:N/E:P",
+                "precision": "very-high",
+                "security-severity": "8.0",
                 "tags": [
                   "vulnerability",
                   "security",
@@ -512,33 +543,6 @@
                 "security-severity": "8.0",
                 "tags": [
                   "vulnerability",
-                  "security",
-                  "HIGH"
-                ]
-              }
-            },
-            {
-              "id": "private-key",
-              "name": "Secret",
-              "shortDescription": {
-                "text": "Asymmetric Private Key"
-              },
-              "fullDescription": {
-                "text": "****************************************************************"
-              },
-              "defaultConfiguration": {
-                "level": "error"
-              },
-              "helpUri": "https://github.com/aquasecurity/trivy/blob/main/pkg/fanal/secret/builtin-rules.go",
-              "help": {
-                "text": "Secret Asymmetric Private Key\nSeverity: HIGH\nMatch: ****************************************************************",
-                "markdown": "**Secret Asymmetric Private Key**\n| Severity | Match |\n| --- | --- |\n|HIGH|****************************************************************|"
-              },
-              "properties": {
-                "precision": "very-high",
-                "security-severity": "8.0",
-                "tags": [
-                  "secret",
                   "security",
                   "HIGH"
                 ]
@@ -1171,17 +1175,17 @@
           ]
         },
         {
-          "ruleId": "CVE-2026-23949",
+          "ruleId": "CVE-2024-6345",
           "ruleIndex": 12,
           "level": "error",
           "message": {
-            "text": "Package: jaraco.context\nInstalled Version: 5.3.0\nVulnerability CVE-2026-23949\nSeverity: HIGH\nFixed Version: 6.1.0\nLink: [CVE-2026-23949](https://avd.aquasec.com/nvd/cve-2026-23949)"
+            "text": "Package: setuptools\nInstalled Version: 65.5.1\nVulnerability CVE-2024-6345\nSeverity: HIGH\nFixed Version: 70.0.0\nLink: [CVE-2024-6345](https://avd.aquasec.com/nvd/cve-2024-6345)"
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "usr/local/lib/python3.11/site-packages/setuptools/_vendor/jaraco.context-5.3.0.dist-info/METADATA",
+                  "uri": "usr/local/lib/python3.11/site-packages/setuptools-65.5.1.dist-info/METADATA",
                   "uriBaseId": "ROOTPATH"
                 },
                 "region": {
@@ -1192,14 +1196,41 @@
                 }
               },
               "message": {
-                "text": "usr/local/lib/python3.11/site-packages/setuptools/_vendor/jaraco.context-5.3.0.dist-info/METADATA: jaraco.context@5.3.0"
+                "text": "usr/local/lib/python3.11/site-packages/setuptools-65.5.1.dist-info/METADATA: setuptools@65.5.1"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-47273",
+          "ruleIndex": 13,
+          "level": "error",
+          "message": {
+            "text": "Package: setuptools\nInstalled Version: 65.5.1\nVulnerability CVE-2025-47273\nSeverity: HIGH\nFixed Version: 78.1.1\nLink: [CVE-2025-47273](https://avd.aquasec.com/nvd/cve-2025-47273)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "usr/local/lib/python3.11/site-packages/setuptools-65.5.1.dist-info/METADATA",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "usr/local/lib/python3.11/site-packages/setuptools-65.5.1.dist-info/METADATA: setuptools@65.5.1"
               }
             }
           ]
         },
         {
           "ruleId": "CVE-2026-24049",
-          "ruleIndex": 13,
+          "ruleIndex": 14,
           "level": "error",
           "message": {
             "text": "Package: wheel\nInstalled Version: 0.45.1\nVulnerability CVE-2026-24049\nSeverity: HIGH\nFixed Version: 0.46.2\nLink: [CVE-2026-24049](https://avd.aquasec.com/nvd/cve-2026-24049)"
@@ -1208,7 +1239,7 @@
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "usr/local/lib/python3.11/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA",
+                  "uri": "usr/local/lib/python3.11/site-packages/wheel-0.45.1.dist-info/METADATA",
                   "uriBaseId": "ROOTPATH"
                 },
                 "region": {
@@ -1219,14 +1250,14 @@
                 }
               },
               "message": {
-                "text": "usr/local/lib/python3.11/site-packages/setuptools/_vendor/wheel-0.45.1.dist-info/METADATA: wheel@0.45.1"
+                "text": "usr/local/lib/python3.11/site-packages/wheel-0.45.1.dist-info/METADATA: wheel@0.45.1"
               }
             }
           ]
         },
         {
           "ruleId": "GHSA-hrxh-6v49-42gf",
-          "ruleIndex": 14,
+          "ruleIndex": 15,
           "level": "error",
           "message": {
             "text": "Package: google.golang.org/grpc\nInstalled Version: v1.80.0\nVulnerability GHSA-hrxh-6v49-42gf\nSeverity: HIGH\nFixed Version: 1.82.1\nLink: [GHSA-hrxh-6v49-42gf](https://github.com/advisories/GHSA-hrxh-6v49-42gf)"
@@ -1253,7 +1284,7 @@
         },
         {
           "ruleId": "CVE-2026-27145",
-          "ruleIndex": 15,
+          "ruleIndex": 16,
           "level": "error",
           "message": {
             "text": "Package: stdlib\nInstalled Version: v1.26.3\nVulnerability CVE-2026-27145\nSeverity: HIGH\nFixed Version: 1.25.11, 1.26.4\nLink: [CVE-2026-27145](https://avd.aquasec.com/nvd/cve-2026-27145)"
@@ -1280,7 +1311,7 @@
         },
         {
           "ruleId": "CVE-2026-39822",
-          "ruleIndex": 16,
+          "ruleIndex": 17,
           "level": "error",
           "message": {
             "text": "Package: stdlib\nInstalled Version: v1.26.3\nVulnerability CVE-2026-39822\nSeverity: HIGH\nFixed Version: 1.25.12, 1.26.5, 1.27.0-rc.2\nLink: [CVE-2026-39822](https://avd.aquasec.com/nvd/cve-2026-39822)"
@@ -1307,7 +1338,7 @@
         },
         {
           "ruleId": "CVE-2026-42504",
-          "ruleIndex": 17,
+          "ruleIndex": 18,
           "level": "error",
           "message": {
             "text": "Package: stdlib\nInstalled Version: v1.26.3\nVulnerability CVE-2026-42504\nSeverity: HIGH\nFixed Version: 1.25.11, 1.26.4\nLink: [CVE-2026-42504](https://avd.aquasec.com/nvd/cve-2026-42504)"
@@ -1331,38 +1362,11 @@
               }
             }
           ]
-        },
-        {
-          "ruleId": "private-key",
-          "ruleIndex": 18,
-          "level": "error",
-          "message": {
-            "text": "Artifact: /app/cosign.key\nType: \nSecret Asymmetric Private Key\nSeverity: HIGH\nMatch: ****************************************************************"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "/app/cosign.key",
-                  "uriBaseId": "ROOTPATH"
-                },
-                "region": {
-                  "startLine": 2,
-                  "startColumn": 1,
-                  "endLine": 10,
-                  "endColumn": 1
-                }
-              },
-              "message": {
-                "text": "/app/cosign.key"
-              }
-            }
-          ]
         }
       ],
       "columnKind": "utf16CodeUnits",
       "properties": {
-        "imageID": "sha256:ada91c95278ea83ac03a7471a5a73c7edf389a15a14597328bebf6d4dc7bef34",
+        "imageID": "sha256:381800b67b856be1e26d9c57d080101ec971c8b744eb523a9e9762fb4bd22693",
         "imageName": "supply-chain-demo",
         "repoDigests": [],
         "repoTags": [
