@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.71.2"
   },
-  "ReportID": "019fb0b8-49a9-7aa6-b759-c145fc0ff16b",
-  "CreatedAt": "2026-07-30T02:51:35.337701642+01:00",
+  "ReportID": "019fb0c5-445d-7dfd-b5a8-7e5c6c30561f",
+  "CreatedAt": "2026-07-30T03:05:45.949919731+01:00",
   "ArtifactID": "sha256:a113bb0360b692d1c62c1964dbe33139802ff8a69f6168720faab73d9571617e",
   "ArtifactName": "supply-chain-demo",
   "ArtifactType": "container_image",

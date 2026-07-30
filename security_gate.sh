@@ -1,69 +1,30 @@
 #!/bin/bash
 
-set +e
+set -e
+
+export PIPAPI_PYTHON_LOCATION="$(pwd)/venv/bin/python"
+
 
 echo "========================================"
 echo " DevSecOps Supply Chain Security Gate"
 echo "========================================"
 
-AUDIT_FAILED=0
+echo
+echo "[1/3] Running pip-audit..."
+python -m pip_audit
 
-echo ""
-echo "[1/5] Running pip-audit..."
-
-pip-audit -r requirements.txt
-
-if [ $? -ne 0 ]; then
-    AUDIT_FAILED=1
-    echo "Dependency vulnerabilities detected."
-else
-    echo "No dependency vulnerabilities found."
-fi
-
-echo ""
-echo "[2/5] Generating CycloneDX SBOM..."
-
-syft . -o cyclonedx-json=sbom.json
-
-echo ""
-echo "[3/5] Building Docker image..."
-
+echo
+echo "[2/3] Building Docker Image..."
 docker build -t supply-chain-demo .
 
-if [ $? -ne 0 ]; then
-    echo "Docker build failed."
-    exit 1
-fi
-
-echo ""
-echo "[4/5] Running Trivy JSON Scan..."
-
+echo
+echo "[3/3] Running Trivy Scan..."
 trivy image \
-    --timeout 15m \
-    --severity HIGH,CRITICAL \
-    --format json \
-    -o supply_chain_audit.json \
-    supply-chain-demo
+  --severity HIGH,CRITICAL \
+  --exit-code 1 \
+  supply-chain-demo
 
-echo ""
-echo "[5/5] Generating SARIF Report..."
-
-trivy image \
-    --timeout 15m \
-    --severity HIGH,CRITICAL \
-    --format sarif \
-    -o results.sarif \
-    supply-chain-demo
-
-echo ""
+echo
 echo "========================================"
-
-if [ $AUDIT_FAILED -eq 1 ]; then
-    echo "❌ SECURITY GATE FAILED"
-    echo "High/Critical vulnerabilities detected."
-    exit 1
-fi
-
 echo "✅ SECURITY GATE PASSED"
-
-exit 0
+echo "========================================"

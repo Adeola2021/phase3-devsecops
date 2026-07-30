@@ -1,35 +1,69 @@
-name: DevSecOps Security Pipeline
+name: DevSecOps Supply Chain Security
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+  security-events: write
+  id-token: write
+
 jobs:
+
   security:
 
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      packages: write
-      security-events: write
-      id-token: write
-
     steps:
+
+    ##########################################################
+    # Checkout
+    ##########################################################
 
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Set up Python
+
+    ##########################################################
+    # Lowercase Repository Owner
+    ##########################################################
+
+    - name: Set lowercase owner
+      id: vars
+      run: |
+        echo "owner=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
+
+    ##########################################################
+    # Python
+    ##########################################################
+
+    - name: Setup Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.11"
+        python-version: "3.13"
 
-    - name: Install Python Dependencies
+    - name: Install Python Packages
       run: |
         python -m pip install --upgrade pip
         pip install pip-audit cyclonedx-bom
+
+
+    ##########################################################
+    # Dependency Audit
+    ##########################################################
+
+    - name: Run pip-audit
+      run: |
+        python -m pip_audit
+
+
+    ##########################################################
+    # Login to GHCR
+    ##########################################################
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
@@ -38,59 +72,114 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build Docker Image
-      run: |
-        docker build \
-          -t ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }} .
 
-    - name: Push Docker Image
-      run: |
-        docker push \
-          ghcr.io/${{ github.repository_owner }}/supply-chain-demo:${{ github.sha }}
+    ##########################################################
+    # Docker Buildx
+    ##########################################################
 
-    - name: Set lowercase owner
-      id: vars
-      run: |
-        echo "owner=$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
-        ghcr.io/${{ steps.vars.outputs.owner }}/phase3-devsecops/supply-chain-demo:${{ github.sha }}
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+
+    ##########################################################
+    # Build and Push Image
+    ##########################################################
+
+    - name: Build and Push Docker Image
+      id: build
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        push: true
+        tags: |
+          ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo:${{ github.sha }}
+
+
+    ##########################################################
+    # Install Syft
+    ##########################################################
 
     - name: Install Syft
       run: |
         curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
-    - name: Install Trivy
-      uses: aquasecurity/trivy-action@master
+
+    ##########################################################
+    # Generate SBOM
+    ##########################################################
+
+    - name: Generate CycloneDX SBOM
+      run: |
+        syft \
+        ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo:${{ github.sha }} \
+        -o cyclonedx-json=sbom.json
+
+
+    ##########################################################
+    # Install Trivy
+    ##########################################################
+
+    - name: Run Trivy Scan
+      uses: aquasecurity/trivy-action@0.33.1
       with:
-        scan-type: image
-        image-ref: ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
+        image-ref: ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo:${{ github.sha }}
         format: sarif
         output: results.sarif
+
+
+    ##########################################################
+    # Upload SARIF
+    ##########################################################
+
+    - name: Upload SARIF
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: results.sarif
+
+
+    ##########################################################
+    # Install Cosign
+    ##########################################################
 
     - name: Install Cosign
       uses: sigstore/cosign-installer@v3
 
+
+    ##########################################################
+    # Keyless Sign
+    ##########################################################
+
     - name: Sign Image
       run: |
         cosign sign --yes \
-          ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
+        ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo@${{ steps.build.outputs.digest }}
+
+
+    ##########################################################
+    # Verify Signature
+    ##########################################################
 
     - name: Verify Signature
       run: |
         cosign verify \
-        --certificate-identity-regexp "https://github.com/${{ github.repository }}" \
-        --certificate-oidc-issuer https://token.actions.githubusercontent.com \
-        ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
+          --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
+          --certificate-identity-regexp="https://github.com/${{ github.repository }}" \
+          ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo@${{ steps.build.outputs.digest }}
 
-    - name: Make security gate executable
-      run: chmod +x security_gate.sh
 
-    - name: Execute Security Gate
-      run: ./security_gate.sh
+    ##########################################################
+    # Generate SLSA Provenance
+    ##########################################################
 
-    - name: Upload SARIF to GitHub Code Scanning
-      uses: github/codeql-action/upload-sarif@v3
+    - name: Generate SLSA Provenance
+      uses: slsa-framework/slsa-github-generator/actions/generator@v2
       with:
-        sarif_file: results.sarif
+        base64-subjects: "${{ steps.build.outputs.digest }}"
+
+
+    ##########################################################
+    # Upload SBOM
+    ##########################################################
 
     - name: Upload SBOM
       uses: actions/upload-artifact@v4
@@ -98,14 +187,13 @@ jobs:
         name: CycloneDX-SBOM
         path: sbom.json
 
-    - name: Generate CycloneDX SBOM
-      run: |
-          syft \
-          ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }} \
-          -o cyclonedx-json=sbom.json
+
+    ##########################################################
+    # Upload Provenance
+    ##########################################################
 
     - name: Upload Provenance
       uses: actions/upload-artifact@v4
       with:
-          name: SLSA-Provenance
-          path: "*.intoto.jsonl"
+        name: SLSA-Provenance
+        path: "*.intoto.jsonl"
