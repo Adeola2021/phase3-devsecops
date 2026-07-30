@@ -39,6 +39,7 @@ echo ""
 echo "[4/5] Running Trivy JSON Scan..."
 
 trivy image \
+    --timeout 15m \
     --severity HIGH,CRITICAL \
     --format json \
     -o supply_chain_audit.json \
@@ -48,6 +49,7 @@ echo ""
 echo "[5/5] Generating SARIF Report..."
 
 trivy image \
+    --timeout 15m \
     --severity HIGH,CRITICAL \
     --format sarif \
     -o results.sarif \

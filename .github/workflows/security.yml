@@ -52,14 +52,28 @@ jobs:
       run: |
         curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
-    - name: Install Trivy CLI
-      run: |
-        wget -qO- https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
+    - name: Install Trivy
+      uses: aquasecurity/trivy-action@0.31.0
+      with:
+        scan-type: image
+        image-ref: ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
+        format: sarif
+        output: results.sarif
+
+    - name: Install Cosign
+      uses: sigstore/cosign-installer@v3
 
     - name: Sign Image
       run: |
         cosign sign --yes \
           ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
+
+    - name: Verify Signature
+      run: |
+        cosign verify \
+        --certificate-identity-regexp "https://github.com/${{ github.repository }}" \
+        --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+        ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
 
     - name: Make security gate executable
       run: chmod +x security_gate.sh
@@ -77,3 +91,15 @@ jobs:
       with:
         name: CycloneDX-SBOM
         path: sbom.json
+
+    - name: Generate CycloneDX SBOM
+      run: |
+          syft \
+          ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }} \
+          -o cyclonedx-json=sbom.json
+
+    - name: Upload Provenance
+      uses: actions/upload-artifact@v4
+      with:
+          name: SLSA-Provenance
+          path: "*.intoto.jsonl"
