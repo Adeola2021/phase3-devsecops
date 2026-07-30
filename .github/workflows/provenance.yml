@@ -1,0 +1,20 @@
+name: SLSA Provenance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  id-token: write
+
+jobs:
+  provenance:
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      packages: write
+    with:
+      image: ghcr.io/adeola2021/supply-chain-demo

@@ -120,7 +120,7 @@ jobs:
     ##########################################################
 
     - name: Run Trivy Scan
-      uses: aquasecurity/trivy-action@0.33.1
+      uses: aquasecurity/trivy-action@v0.36.0
       with:
         image-ref: ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo:${{ github.sha }}
         format: sarif
@@ -165,16 +165,6 @@ jobs:
           --certificate-oidc-issuer=https://token.actions.githubusercontent.com \
           --certificate-identity-regexp="https://github.com/${{ github.repository }}" \
           ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo@${{ steps.build.outputs.digest }}
-
-
-    ##########################################################
-    # Generate SLSA Provenance
-    ##########################################################
-
-    - name: Generate SLSA Provenance
-      uses: slsa-framework/slsa-github-generator/actions/generator@v2
-      with:
-        base64-subjects: "${{ steps.build.outputs.digest }}"
 
 
     ##########################################################
