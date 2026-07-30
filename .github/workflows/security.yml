@@ -95,6 +95,12 @@ jobs:
           ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo:${{ github.sha }}
 
 
+    - name: Generate SLSA Provenance
+      uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v2.1.0
+      with:
+        image: ghcr.io/${{ steps.vars.outputs.owner }}/supply-chain-demo
+        digest: ${{ steps.build.outputs.digest }}
+
     ##########################################################
     # Install Syft
     ##########################################################
