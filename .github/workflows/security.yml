@@ -53,7 +53,7 @@ jobs:
         curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
 
     - name: Install Trivy
-      uses: aquasecurity/trivy-action@0.31.0
+      uses: aquasecurity/trivy-action@master
       with:
         scan-type: image
         image-ref: ghcr.io/${{ github.repository }}/supply-chain-demo:${{ github.sha }}
