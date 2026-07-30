@@ -978,7 +978,7 @@
       ],
       "columnKind": "utf16CodeUnits",
       "properties": {
-        "imageID": "sha256:493696d6864657743a70f14508299b8426ac48c2e73607c722f42aafedff7cba",
+        "imageID": "sha256:e8665525d0eba12f9ae84083b3db108080600a56bfe59f893d55d8ccd603edb1",
         "imageName": "supply-chain-demo",
         "repoDigests": [],
         "repoTags": [

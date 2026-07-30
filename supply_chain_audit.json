@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.71.2"
   },
-  "ReportID": "019fb0a4-232a-7461-9969-f03afb8a67b1",
-  "CreatedAt": "2026-07-30T02:29:34.762291316+01:00",
-  "ArtifactID": "sha256:bacbdeae86ff933fc08c4fe54a6149e0af42c91449bbaea8d8504670f2fe829a",
+  "ReportID": "019fb0ae-ca81-774c-8474-71b6c2605113",
+  "CreatedAt": "2026-07-30T02:41:12.961481945+01:00",
+  "ArtifactID": "sha256:1e1a242cdd0c94ce4b96d8d918fca97d9118d1eb9f9fb2e9296b4aa1ade15c0a",
   "ArtifactName": "supply-chain-demo",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -14,7 +14,7 @@
       "Family": "debian",
       "Name": "13.6"
     },
-    "ImageID": "sha256:493696d6864657743a70f14508299b8426ac48c2e73607c722f42aafedff7cba",
+    "ImageID": "sha256:e8665525d0eba12f9ae84083b3db108080600a56bfe59f893d55d8ccd603edb1",
     "DiffIDs": [
       "sha256:f2ec4de84f559f5c7be4233b589cdbdbb5507807e05621b77320edd55a1f2a0f",
       "sha256:5b21fa92fbc32b17b9dcc0b309e2f3a61dadd435438f81612e72350dd36e2d60",
@@ -25,7 +25,7 @@
       "sha256:96867c627a4229acb7c14839e686451fb229eb99f52d73ad787056a9c3f257d0",
       "sha256:cfb3c2d8172c9fe02e475d4a4f25d7740cb2011d1774f9075b0499c00bb0eb99",
       "sha256:4bc04dd59e377129ec764973337bcdd7b34429530b72519329bd33ab20ed5d00",
-      "sha256:3196bb5a3ecd85adc5d19ce1af63020154010d3c46de794143a0d9ce6243971d"
+      "sha256:9749d74cb026db33ff642e71f4d35b913e60ced847c3510ce699ca140b957d02"
     ],
     "RepoTags": [
       "supply-chain-demo:latest"
@@ -33,7 +33,7 @@
     "Reference": "supply-chain-demo:latest",
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2026-07-30T02:28:41.527408528+01:00",
+      "created": "2026-07-30T02:41:04.249514076+01:00",
       "history": [
         {
           "created": "2026-07-13T00:00:00Z",
@@ -111,12 +111,12 @@
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-07-30T01:28:41Z",
+          "created": "2026-07-30T01:41:04Z",
           "created_by": "COPY . . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2026-07-30T01:28:41Z",
+          "created": "2026-07-30T01:41:04Z",
           "created_by": "CMD [\"python\" \"--version\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -135,7 +135,7 @@
           "sha256:96867c627a4229acb7c14839e686451fb229eb99f52d73ad787056a9c3f257d0",
           "sha256:cfb3c2d8172c9fe02e475d4a4f25d7740cb2011d1774f9075b0499c00bb0eb99",
           "sha256:4bc04dd59e377129ec764973337bcdd7b34429530b72519329bd33ab20ed5d00",
-          "sha256:3196bb5a3ecd85adc5d19ce1af63020154010d3c46de794143a0d9ce6243971d"
+          "sha256:9749d74cb026db33ff642e71f4d35b913e60ced847c3510ce699ca140b957d02"
         ]
       },
       "config": {
@@ -192,7 +192,7 @@
       },
       {
         "Size": 17920,
-        "DiffID": "sha256:3196bb5a3ecd85adc5d19ce1af63020154010d3c46de794143a0d9ce6243971d"
+        "DiffID": "sha256:9749d74cb026db33ff642e71f4d35b913e60ced847c3510ce699ca140b957d02"
       }
     ]
   },
@@ -7740,7 +7740,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:6e6131e2a9b14a7fc36aac9d83c8fda320c39056c373dec432d72cea73511c4c",
+          "Fingerprint": "sha256:da85697714c69e0b166f6cb8936885389780f83d17b852b97ae7ccfbbffba226",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -7768,7 +7768,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:fe56a8ff1a904ae72bf2b53597149472357077e4e16ab07722b70d079db98ee4",
+          "Fingerprint": "sha256:c62120e5b8a259fff2db8a546ff969d55154943af72372b28f23edc58f590c7c",
           "Title": "GNU gzip contains a global buffer overflow vulnerability in the LZH de ...",
           "Description": "GNU gzip contains a global buffer overflow vulnerability in the LZH decompression logic caused by improper reuse of shared global state between different decompression formats within a single execution. GNU gzip maintains a global array that is shared across the LZ77, LZW, and LZH decompression routines and is not reinitialized between files processed in the same invocation.\nBy decompressing a specially crafted LZW file followed by a specially crafted LZH file in a single gzip -d command, an attacker can poison the shared global state and subsequently trigger an out‑of‑bounds read in the LZH decoder. The LZH decompression logic follows stale values left in the shared array, causing reads past the end of the allocated global buffer.\n\nThis issue has been fixed in the commit 63dbf6b3b9e6e781df1a6a64e609b10e23969681",
           "Severity": "HIGH",
@@ -7816,7 +7816,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:ce933b4ef66dc1e29c2bf54136a119605b5495df53ea6d0d51645de9391de53a",
+          "Fingerprint": "sha256:56c223c5d7095baa03e6e096e1d314aa7e90ff9f61426a01885545ad5a0c7620",
           "Title": "acl: Symlink traversal privilege escalation via libacl functions",
           "Description": "acl before version 2.4.0 contains a symlink traversal vulnerability in the libacl pathname-based functions acl_get_file(), acl_set_file(), acl_extended_file(), and acl_delete_def_file() that allows local attackers to escalate privileges by replacing any pathname component with a symbolic link. Attackers who control any component of a pathname processed by a privileged caller can redirect ACL read or write operations to arbitrary files or directories, enabling unauthorized manipulation of access control lists and local privilege escalation.",
           "Severity": "HIGH",
@@ -7883,7 +7883,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:7a2671b283f515383df90ba1932bd5a39769e1cba63b24454790a4319300647d",
+          "Fingerprint": "sha256:ef78a3455a99f6c56e61698a32354afc1489c3bf810416344ca526f05d3d7ff5",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -7910,7 +7910,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:18ed3f8ed5f79f782113d30843a85a671b87fceb5c0a7942c7ed76ae4b2f2c29",
+          "Fingerprint": "sha256:dcf47ace4d00db5c62591628ea902a28fc2d345146e7820c01d68a40c9f4c5c7",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -7937,7 +7937,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:f84cd34a1b36655d125c98a5e85e968fa23dae83b8deb92c69f48454a6442fd2",
+          "Fingerprint": "sha256:4be523cca5dcc13f296ca87b80bea3d292bfff1ad54beb574023fb65b3217bc4",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -7965,7 +7965,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:c8c3e9cd83dbcb08839fd7b12f82b26348532a44fc7aaf061d5ddd20a5ab6a1c",
+          "Fingerprint": "sha256:f140cd5810feaa26ded17ee38ab71fe5e7949911a963040ad572eff2eee9182d",
           "Title": "ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.",
           "Description": "The infocmp command-line tool in ncurses before 6.5-20251213 has a stack-based buffer overflow in analyze_string in progs/infocmp.c.",
           "Severity": "HIGH",
@@ -8037,7 +8037,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:246c23e7401c7147b335a2be16db9f6d501ac89ad948a49546ff5984c57cdc27",
+          "Fingerprint": "sha256:c77c71f549c404f7060687bc18766e6ebeaa5cea655b0085a35e8b3c8030d44e",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -8065,7 +8065,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:49ad9dc0478e8e8f361930e0e0dd16f42653556ad26ba329034c9b4b2bf2b43a",
+          "Fingerprint": "sha256:9c8f50cd17e3bf32e5eb35a012bff15df870dadd7cb8517ec9a679eb4c288cee",
           "Title": "ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.",
           "Description": "The infocmp command-line tool in ncurses before 6.5-20251213 has a stack-based buffer overflow in analyze_string in progs/infocmp.c.",
           "Severity": "HIGH",
@@ -8137,7 +8137,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:1aab84b314cf3bccfe3a677cef310314e0fed404c83934833e1ce87d29062146",
+          "Fingerprint": "sha256:bb028d8775537759256e9c5a48e9cc81cdb68e2ffca3e22d41f68ed5b90e9075",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -8164,7 +8164,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:8d00d24889665483a75018ba8995b8833af889571a4dc73c1116ccd9bb68a97d",
+          "Fingerprint": "sha256:eeaa7bf6aa31c3ef736b81dd036ff6893da6e23aa5875a68e889541707ec0a6a",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -8191,7 +8191,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:e1714a52d6ccb0c159f22a24c39024a13cb0f5d17940856d32bbb1fa5064e5a3",
+          "Fingerprint": "sha256:c42b9d49c079533ebe060cf406afa21fead369ffc1ad0edd42ed54d6386fc751",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
@@ -8219,7 +8219,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:1273e207379bdfe25ce8860bbca59347dae0fcc837403a916c99b03d053a4551",
+          "Fingerprint": "sha256:ca887ed551bdc6ead89e7f259cc8e370fa04d911dc0d718b456d16f0237435dc",
           "Title": "ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.",
           "Description": "The infocmp command-line tool in ncurses before 6.5-20251213 has a stack-based buffer overflow in analyze_string in progs/infocmp.c.",
           "Severity": "HIGH",
@@ -8292,7 +8292,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:2c635eb58e561fef72efa480a3a61d48f168df21f8da59eaf64b596e9f424ea4",
+          "Fingerprint": "sha256:2c892515f73af2878dfc0d15fa567f7a6ccaf842232055f3315991f27245c2be",
           "Title": "ncurses: ncurses: Buffer overflow vulnerability may lead to arbitrary code execution.",
           "Description": "The infocmp command-line tool in ncurses before 6.5-20251213 has a stack-based buffer overflow in analyze_string in progs/infocmp.c.",
           "Severity": "HIGH",
@@ -8365,7 +8365,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:5bb736c5f6885a3f16fd7f95b40733e9723c42e13f09b561a4452ec3ea8bfccd",
+          "Fingerprint": "sha256:5f8bd4868bbc7786585b1f184fb858e5215f079e8c2c36a06ef5996628584572",
           "Title": "Perl versions through 5.43.9 produce silently incorrect regular expres ...",
           "Description": "Perl versions through 5.43.9 produce silently incorrect regular expression matches when an alternation of more than 65535 fixed string branches is compiled into a trie in Perl_study_chunk.\n\nWhen such branches are combined into a trie, the delta between the first branch and the shared tail is stored in a 16-bit field. A branch count above 65535 overflows the field, and the trie's match decision table is truncated with no warning or error.\n\nA pattern of this shape produces false positive matches (matching strings it should not) and false negative matches (failing to match strings it should). When such a pattern gates an access or filtering decision, the result is wrong.",
           "Severity": "CRITICAL",
@@ -8411,7 +8411,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:7510bbb5d41397a52a5b80b07f5f3510a2fb61dee4c1d2552b5ab1c111b65f3d",
+          "Fingerprint": "sha256:0d60403e31014446957fb8e07e9182a3f424998ea56b97efe761a59873a5ad0c",
           "Title": "perl-archive-tar: perl-archive-tar: Path traversal via crafted symlinks allows arbitrary file access",
           "Description": "Archive::Tar versions before 3.08 for Perl extract symlinks with attacker controlled targets outside the extraction directory.\n\n_make_special_file() passes the tar header's linkname to symlink() without validating it against absolute paths or .. segments. The secure-extract mode check that guards regular file extraction does not cover the symlink target.\n\nA subsequent open through the extracted name reads or writes the attacker chosen path.",
           "Severity": "CRITICAL",
@@ -8483,7 +8483,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:d415be6a0910d3a5a2949faba48990f79e49769b08fba595e60d888bb5b44d21",
+          "Fingerprint": "sha256:a58cf3e119ca374ab5ad7d4000261374ce0e7b01bc5f252afce03c4f46f879b9",
           "Title": "Storable versions before 3.41 for Perl have a signed integer overflow  ...",
           "Description": "Storable versions before 3.41 for Perl have a signed integer overflow when deserializing a crafted SX_HOOK record.\n\nretrieve_hook_common reads a signed 32-bit item count from an SX_HOOK record and calls av_extend with that count plus one. A count of I32_MAX wraps the addition to a negative value.\n\nA crafted blob passed to thaw or retrieve triggers the overflow; av_extend receives the negative count and dies with a panic, terminating the deserialization.",
           "Severity": "CRITICAL",
@@ -8521,7 +8521,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:1c5dfbf5f8197da988ec4a1a1e979fc5ae0e39ad07149752788624f742825b79",
+          "Fingerprint": "sha256:b0ee0d28a7f58ac3d244c69f413b47083be3f6e24a059bc51bbc564c13685131",
           "Title": "perl: Perl: Heap buffer overflow when compiling regular expressions on 32-bit builds",
           "Description": "Perl versions through 5.43.10 have a heap buffer overflow when compiling regular expressions with a repeated fixed string on 32-bit builds.\n\nPerl_study_chunk in regcomp_study.c checked the size of the joined substring buffer in characters rather than bytes. For a quantified fixed substring with a large minimum count, the byte length mincount * l could overflow SSize_t, producing an undersized SvGROW allocation; the subsequent copy writes past the end of the buffer.\n\nA caller that compiles an attacker-controlled regular expression on a 32-bit perl build triggers a heap buffer overflow at compile time.",
           "Severity": "CRITICAL",
@@ -8578,7 +8578,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:11328e26cc5d4d6f7dadbac78efaefc611c9769b02fcc85b397f7bd76a28f212",
+          "Fingerprint": "sha256:ba1318fa0a224de89506c541455e2fe949f76a64fe2452a1382356d3748cbe8b",
           "Title": "perl-Archive-Tar: perl-Archive-Tar: Arbitrary file modification via crafted hardlinks during archive extraction",
           "Description": "Archive::Tar versions before 3.08 for Perl extract hardlinks to attacker controlled paths outside the extraction directory.\n\n_make_special_file() passes the tar header's linkname to link() without validating it against absolute paths or .. segments, creating a hardlink that shares the victim file's inode.\n\nA subsequent write through the extracted name modifies the victim file, and the post-extraction chmod, chown, and utime block in _extract_file() (guarded only against symlinks via -l) applies the tar header's mode, owner, and timestamps to the shared inode during extraction alone.",
           "Severity": "HIGH",
@@ -8632,7 +8632,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:e1175a2e940dc8f0e4a3218067a607f510593e1d108e44d67223ae0721aff13d",
+          "Fingerprint": "sha256:3fd97262405104d98b8ab735a58260247030cedb27f2586ed9976b375eeb6545",
           "Title": "perl-IO-Compress: perl-IO-Compress: Arbitrary code execution via attacker-controlled output glob",
           "Description": "IO::Compress versions before 2.220 for Perl can execute arbitrary code in File::GlobMapper via an attacker-controlled output glob.\n\n_parseOutputGlob() wraps the caller-supplied output glob string in double quotes and stores it in the parser state; _getFiles() then runs the stored expression through eval STRING. A literal double quote in the output glob closes the dquote wrapper, and the characters that follow are evaluated as Perl.\n\nArbitrary Perl in the output glob executes at the calling process's privilege.",
           "Severity": "HIGH",
@@ -8705,7 +8705,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:05733dc69c1e5df98a83cccd3dd01fc1a2ebbd775ce73182ebd8cea756dd46f2",
+          "Fingerprint": "sha256:cfe6a6861eb80ad7933c38826867d01126d392197bea5a7c0ddbd9a8ec67f85f",
           "Title": "Perl versions through 5.43.10 have an integer overflow in S_measure_st ...",
           "Description": "Perl versions through 5.43.10 have an integer overflow in S_measure_struct leading to an out-of-bounds heap read in pack and unpack.\n\nS_measure_struct adds each item's size times its repeat count to a running total with no overflow check, so a large repeat count in a pack or unpack template wraps the signed SSize_t total negative. The @, X, and x position codes then guard their moves with a signed length comparison that passes when the length is negative, advancing the buffer pointer out of bounds.\n\nA template derived from untrusted input can read heap memory past the buffer and return it to the caller.",
           "Severity": "HIGH",
@@ -8752,7 +8752,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:3af24a72a0ec38c4c993d6334b1cbf5cca3c314a6ecb85383209d288dd39b2e8",
+          "Fingerprint": "sha256:5e77c47b250fa72a52c57dfec0aee1b0770aeb81ad1919d72e0f4bfca5247cc1",
           "Title": "perl-Archive-Tar: perl-Archive-Tar: Denial of Service via crafted tar header with large entry size",
           "Description": "Archive::Tar versions before 3.10 for Perl allow memory exhaustion via attacker controlled entry size field in tar header.\n\n_read_tar() reads each entry's payload with $handle-\u003eread($$data, $block), where $block is derived from the entry's 12-byte size field in the tar header with no upper bound on that value.\n\nA crafted header declaring a multi-gigabyte size causes Perl to allocate a scalar of that size.",
           "Severity": "HIGH",
@@ -8804,7 +8804,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:b42210b01694904ab2bac3a90bae8ad6320b6bc1769a0e772ae2da05d2822185",
+          "Fingerprint": "sha256:4fbdda6e4d9dbdc0ebeb7e52888f0ecee89288547f5b53fae424e0884c485e98",
           "Title": "[Integer Overflow or Wraparound in libblkid/src/partitions/dos.c]",
           "Description": "Package updates are available for Amazon Linux 2 that fix the following vulnerabilities:\nCVE-2026-53615:\n\tInteger Overflow or Wraparound in libblkid/src/partitions/dos.c\n",
           "Severity": "HIGH",
