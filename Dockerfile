@@ -16,4 +16,6 @@ WORKDIR /app
 COPY --from=builder /usr/local /usr/local
 COPY --from=builder /app .
 
+# Override Chainguard's default entrypoint
+ENTRYPOINT ["/usr/local/bin/python"]
 CMD ["app.py"]
