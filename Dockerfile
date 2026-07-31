@@ -5,7 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN pip install --upgrade pip setuptools wheel
-RUN pip install --prefix=/install -r requirements.txt
+RUN pip install --prefix=/usr/local -r requirements.txt
 
 COPY . .
 
@@ -13,7 +13,7 @@ FROM cgr.dev/chainguard/python:latest
 
 WORKDIR /app
 
-COPY --from=builder /install /usr/local
+COPY --from=builder /usr/local /usr/local
 COPY --from=builder /app .
 
-CMD ["python","app.py"]
+CMD ["app.py"]
