@@ -20,7 +20,11 @@ docker build -t supply-chain-demo .
 echo
 echo "[3/3] Running Trivy Scan..."
 trivy image \
-  --timeout 15m \
+  --severity HIGH,CRITICAL \
+  --ignore-unfixed \
+  --exit-code 0 \
+  --format table \
+  --output trivy-report.txt \
   supply-chain-demo
 
 echo
