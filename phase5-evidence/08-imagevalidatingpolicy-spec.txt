@@ -1,0 +1,136 @@
+GROUP:      policies.kyverno.io
+KIND:       ImageValidatingPolicy
+VERSION:    v1
+
+FIELD: spec <Object>
+
+
+DESCRIPTION:
+    ImageValidatingPolicySpec is the specification of the desired behavior of
+    the ImageValidatingPolicy.
+    
+FIELDS:
+  attestations	<[]Object>
+    intoto	<Object>
+      type	<string> -required-
+    name	<string> -required-
+    referrer	<Object>
+      type	<string> -required-
+  attestors	<[]Object> -required-
+    cosign	<Object>
+      annotations	<map[string]string>
+      certificate	<Object>
+        cert	<Object>
+          expression	<string>
+          value	<string>
+        certChain	<Object>
+          expression	<string>
+          value	<string>
+      ctlog	<Object>
+        ctLogPubKey	<string>
+        insecureIgnoreSCT	<boolean>
+        insecureIgnoreTlog	<boolean>
+        rekorPubKey	<string>
+        tsaCertChain	<string>
+        url	<string>
+      key	<Object>
+        data	<string>
+        expression	<string>
+        hashAlgorithm	<string>
+        kms	<string>
+      keyless	<Object>
+        identities	<[]Object> -required-
+          issuer	<string>
+          issuerRegExp	<string>
+          subject	<string>
+          subjectRegExp	<string>
+        roots	<string>
+      source	<Object>
+        PullSecrets	<[]Object>
+          name	<string>
+        repository	<string>
+        tagPrefix	<string>
+      tuf	<Object>
+        mirror	<string>
+        root	<Object>
+          data	<string>
+          path	<string>
+    name	<string> -required-
+    notary	<Object>
+      certs	<Object>
+        expression	<string>
+        value	<string>
+      tsaCerts	<Object>
+        expression	<string>
+        value	<string>
+  auditAnnotations	<[]Object>
+    key	<string> -required-
+    valueExpression	<string> -required-
+  autogen	<Object>
+    podControllers	<Object>
+      controllers	<[]string>
+  credentials	<Object>
+    allowInsecureRegistry	<boolean>
+    providers	<[]string>
+    secrets	<[]string>
+  evaluation	<Object>
+    admission	<Object>
+      enabled	<boolean>
+    background	<Object>
+      enabled	<boolean>
+    mode	<string>
+  failurePolicy	<string>
+  enum: Ignore, Fail
+  images	<[]Object>
+    expression	<string> -required-
+    name	<string> -required-
+  matchConditions	<[]Object>
+    expression	<string> -required-
+    name	<string> -required-
+  matchConstraints	<Object>
+    excludeResourceRules	<[]Object>
+      apiGroups	<[]string>
+      apiVersions	<[]string>
+      operations	<[]string>
+      resourceNames	<[]string>
+      resources	<[]string>
+      scope	<string>
+    matchPolicy	<string>
+    namespaceSelector	<Object>
+      matchExpressions	<[]Object>
+        key	<string> -required-
+        operator	<string> -required-
+        values	<[]string>
+      matchLabels	<map[string]string>
+    objectSelector	<Object>
+      matchExpressions	<[]Object>
+        key	<string> -required-
+        operator	<string> -required-
+        values	<[]string>
+      matchLabels	<map[string]string>
+    resourceRules	<[]Object>
+      apiGroups	<[]string>
+      apiVersions	<[]string>
+      operations	<[]string>
+      resourceNames	<[]string>
+      resources	<[]string>
+      scope	<string>
+  matchImageReferences	<[]Object>
+    expression	<string>
+    glob	<string>
+  validationActions	<[]string>
+  validationConfigurations	<Object>
+    mutateDigest	<boolean>
+    required	<boolean>
+    verifyDigest	<boolean>
+  validations	<[]Object> -required-
+    expression	<string> -required-
+    message	<string>
+    messageExpression	<string>
+    reason	<string>
+  variables	<[]Object>
+    expression	<string> -required-
+    name	<string> -required-
+  webhookConfiguration	<Object>
+    timeoutSeconds	<integer>
+

@@ -1,0 +1,4 @@
+NAME                                READY   STATUS    RESTARTS        AGE     IP            NODE                          NOMINATED NODE   READINESS GATES
+supply-chain-demo-5bd48c797-2wn7f   1/1     Running   1 (7h50m ago)   2d20h   10.244.0.4    devsecops-lab-control-plane   <none>           <none>
+supply-chain-demo-5bd48c797-9tbc6   1/1     Running   1 (7h50m ago)   2d20h   10.244.0.6    devsecops-lab-control-plane   <none>           <none>
+unsigned-nginx-5fb4f67db5-tsllb     1/1     Running   0               40m     10.244.0.15   devsecops-lab-control-plane   <none>           <none>

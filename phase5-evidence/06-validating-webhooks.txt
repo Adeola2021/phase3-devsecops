@@ -1,0 +1,8 @@
+NAME                                            WEBHOOKS   AGE
+kyverno-cel-exception-validating-webhook-cfg    1          4h4m
+kyverno-cleanup-validating-webhook-cfg          1          4h11m
+kyverno-exception-validating-webhook-cfg        1          4h4m
+kyverno-global-context-validating-webhook-cfg   1          4h4m
+kyverno-policy-validating-webhook-cfg           1          4h4m
+kyverno-resource-validating-webhook-cfg         0          4h4m
+kyverno-ttl-validating-webhook-cfg              1          4h11m
