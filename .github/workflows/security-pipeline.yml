@@ -26,7 +26,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install pip-audit
+          python -m pip install --upgrade pip
+          python -m pip install "setuptools>=83.0.0" wheel
+          python -m pip install -r requirements.txt
+          python -m pip install pip-audit
 
       - name: Dependency Scan
         run: |
