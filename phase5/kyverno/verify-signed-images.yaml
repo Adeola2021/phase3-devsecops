@@ -1,0 +1,28 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: verify-signed-images
+spec:
+  validationFailureAction: Enforce
+  background: false
+
+  rules:
+    - name: verify-cosign-signature
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+
+      verifyImages:
+      - imageReferences:
+          - "ghcr.io/adeola2021/*"
+
+        mutateDigest: true
+        attestors:
+        - entries:
+         keyless:
+           issuer: https://token.actions.githubusercontent.com
+           subject: https://github.com/adeola2021/phase3-devsecops/.github/workflows/security.yml@refs/heads/main
+           rekor:
+             url: https://rekor.sigstore.dev

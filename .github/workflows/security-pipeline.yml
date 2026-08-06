@@ -1,0 +1,55 @@
+name: DevSecOps Security Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  security:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install pip-audit
+
+      - name: Dependency Scan
+        run: |
+          pip-audit --strict
+
+      - name: Install Syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+
+      - name: Generate SBOM
+        run: |
+          syft . -o cyclonedx-json > sbom.json
+
+      - name: Install Trivy
+        run: |
+          sudo apt-get update
+          sudo apt-get install wget -y
+          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.71.2_Linux-64bit.deb
+          sudo dpkg -i trivy_0.71.2_Linux-64bit.deb
+
+      - name: Build Image
+        run: |
+          docker build -t supplychain-demo .
+
+      - name: Scan Image
+        run: |
+          trivy image \
+          --severity HIGH,CRITICAL \
+          --exit-code 1 \
+          supplychain-demo

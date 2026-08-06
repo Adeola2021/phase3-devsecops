@@ -1,0 +1,4 @@
+NAME                                    WEBHOOKS   AGE
+kyverno-policy-mutating-webhook-cfg     1          4h4m
+kyverno-resource-mutating-webhook-cfg   0          4h4m
+kyverno-verify-mutating-webhook-cfg     1          4h4m

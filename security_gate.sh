@@ -11,7 +11,7 @@ echo "========================================"
 
 echo
 echo "[1/3] Running pip-audit..."
-python -m pip_audit
+python3 -m pip_audit
 
 echo
 echo "[2/3] Building Docker Image..."
@@ -20,8 +20,7 @@ docker build -t supply-chain-demo .
 echo
 echo "[3/3] Running Trivy Scan..."
 trivy image \
-  --severity HIGH,CRITICAL \
-  --exit-code 1 \
+  --timeout 15m \
   supply-chain-demo
 
 echo

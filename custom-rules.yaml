@@ -1,0 +1,23 @@
+- rule: Container Read Host Shadow
+  desc: Detect a container reading the host shadow file
+  condition: >
+    open_read and
+    fd.name contains "/host/etc/shadow" and
+    container
+  output: >
+    Container accessed host shadow file
+    (user=%user.name container=%container.name file=%fd.name command=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, filesystem, mitre_discovery]
+
+- rule: Container Write Host Filesystem
+  desc: Detect writes to mounted host filesystem
+  condition: >
+    open_write and
+    fd.name startswith "/host/" and
+    container
+  output: >
+    Container wrote to host filesystem
+    (user=%user.name container=%container.name file=%fd.name command=%proc.cmdline)
+  priority: CRITICAL
+  tags: [container, filesystem]

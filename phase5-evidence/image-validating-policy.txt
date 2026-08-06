@@ -1,0 +1,53 @@
+Name:         verify-supply-chain-demo
+Namespace:    
+Labels:       <none>
+Annotations:  <none>
+API Version:  policies.kyverno.io/v1
+Kind:         ImageValidatingPolicy
+Metadata:
+  Creation Timestamp:  2026-08-03T16:11:17Z
+  Generation:          1
+  Resource Version:    104388
+  UID:                 69dcf2bd-0ee4-4c8b-a528-bda2c8bca4db
+Spec:
+  Attestors:
+    Cosign:
+      Ctlog:
+        URL:  https://rekor.sigstore.dev
+      Keyless:
+        Identities:
+          Issuer:   https://token.actions.githubusercontent.com
+          Subject:  https://github.com/adeola2021/phase3-devsecops/.github/workflows/security.yml@refs/heads/main
+    Name:           githubCosign
+  Match Image References:
+    Glob:  ghcr.io/adeola2021/*
+  Validation Actions:
+    Audit
+    Deny
+  Validation Configurations:
+    Mutate Digest:  true
+    Required:       true
+    Verify Digest:  true
+  Validations:
+    Expression:  images.containers.map(
+  image,
+  verifyImageSignatures(image, [attestors.githubCosign])
+).all(result, result > 0)
+    Message:  Image signature verification failed.
+Status:
+  Autogen:
+  Condition Status:
+    Conditions:
+      Last Transition Time:  2026-08-03T16:11:17Z
+      Message:               Webhook configured.
+      Reason:                Succeeded
+      Status:                True
+      Type:                  WebhookConfigured
+      Last Transition Time:  2026-08-03T16:11:17Z
+      Message:               Policy is ready for reporting.
+      Reason:                Succeeded
+      Status:                True
+      Type:                  RBACPermissionsGranted
+    Message:                 
+    Ready:                   true
+Events:                      <none>

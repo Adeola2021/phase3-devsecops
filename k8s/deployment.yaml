@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: supply-chain-demo
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: supply-chain-demo
+
+  template:
+    metadata:
+      labels:
+        app: supply-chain-demo
+
+    spec:
+      containers:
+      - name: flask
+
+        image: ghcr.io/adeola2021/supply-chain-demo:latest
+
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 5000

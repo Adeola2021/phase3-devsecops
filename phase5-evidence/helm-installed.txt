@@ -1,0 +1,3 @@
+NAME   	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART        	APP VERSION
+falco  	falco    	1       	2026-08-03 18:11:40.0958218 +0100 WAT  	deployed	falco-9.1.0  	0.44.1     
+kyverno	kyverno  	1       	2026-08-03 10:35:54.376884186 +0100 WAT	deployed	kyverno-3.8.2	v1.18.2    

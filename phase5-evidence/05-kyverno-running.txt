@@ -1,0 +1,5 @@
+NAME                                             READY   STATUS    RESTARTS      AGE
+kyverno-admission-controller-f849f45fd-ln2hx     1/1     Running   1 (62m ago)   4h17m
+kyverno-background-controller-5bd5c4465b-d5pc4   1/1     Running   1 (11m ago)   4h17m
+kyverno-cleanup-controller-847b887d6c-5mn5n      1/1     Running   2 (11m ago)   4h17m
+kyverno-reports-controller-75bc4c4784-gmwqh      1/1     Running   0             4h17m
