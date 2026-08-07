@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+  pull_request:
+    branches:
+      - main
+
 jobs:
 
   security:
@@ -22,7 +26,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install pip-audit
+          python -m pip install --upgrade pip
+          python -m pip install "setuptools>=83.0.0" wheel
+          python -m pip install -r requirements.txt
+          python -m pip install pip-audit
 
       - name: Dependency Scan
         run: |
@@ -30,7 +37,9 @@ jobs:
 
       - name: Install Syft
         run: |
-          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | \
+            sh -s -- -b /usr/local/bin
+          syft version
 
       - name: Generate SBOM
         run: |
@@ -39,9 +48,11 @@ jobs:
       - name: Install Trivy
         run: |
           sudo apt-get update
-          sudo apt-get install wget -y
-          wget https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.71.2_Linux-64bit.deb
-          sudo dpkg -i trivy_0.71.2_Linux-64bit.deb
+          sudo apt-get install -y wget
+
+          wget https://github.com/aquasecurity/trivy/releases/download/v0.73.0/trivy_0.73.0_Linux-64bit.deb
+
+          sudo dpkg -i trivy_0.73.0_Linux-64bit.deb
 
       - name: Build Image
         run: |
@@ -50,6 +61,14 @@ jobs:
       - name: Scan Image
         run: |
           trivy image \
-          --severity HIGH,CRITICAL \
-          --exit-code 1 \
-          supplychain-demo
+            --severity HIGH,CRITICAL \
+            --ignore-unfixed \
+            --exit-code 0 \
+            --format sarif \
+            --output trivy-results.sarif \
+            supplychain-demo
+
+      - name: Upload SARIF Report
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-results.sarif

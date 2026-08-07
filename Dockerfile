@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY requirements.txt .
 
+RUN pip install --upgrade pip
+RUN pip install setuptools>=83.0.0 wheel
+
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install --prefix=/usr/local -r requirements.txt
 
